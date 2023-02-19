@@ -16,6 +16,10 @@ export const MENU_LINKS = [
 		path: "/tags/aws-series",
 	},
 	{
+		title: "server-series",
+		path: "/tags/server-series",
+	},
+	{
 		title: "journal",
 		path: "/tags/journal",
 	},
