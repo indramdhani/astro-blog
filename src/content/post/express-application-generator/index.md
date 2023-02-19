@@ -2,6 +2,7 @@
 title: "Express Application Generator"
 publishDate: "2021-03-03"
 tags:
+  - code-series
   - "expressjs"
   - "generator"
 ---
