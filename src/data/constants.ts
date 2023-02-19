@@ -8,16 +8,8 @@ export const MENU_LINKS = [
 		path: "/posts",
 	},
 	{
-		title: "docker-series",
-		path: "/tags/docker-series",
-	},
-	{
-		title: "aws-series",
-		path: "/tags/aws-series",
-	},
-	{
-		title: "server-series",
-		path: "/tags/server-series",
+		title: "collections",
+		path: "/collections",
 	},
 	{
 		title: "journal",

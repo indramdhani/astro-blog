@@ -1,0 +1,23 @@
+---
+import PageLayout from "@/layouts/Base";
+import { Image } from "@astrojs/image/components";
+import aboutImg from "../assets/about-astro.png";
+
+const meta = {
+	title: "Collections",
+	description:
+		"A collection is a group of related items or objects that are gathered together and usually organized or classified according to a specific characteristic or purpose. ",
+};
+---
+
+<PageLayout meta={meta}>
+	<div class="space-y-6">
+		<h1 class="title">collections</h1>
+		<ul class="list-inside list-disc">
+			<li><a class="cactus-link" href="./tags/docker-series">docker-series</a></li>
+			<li><a class="cactus-link" href="./tags/server-series">server-series</a></li>
+			<li><a class="cactus-link" href="./tags/aws-series">aws-series</a></li>
+			<li><a class="cactus-link" href="./tags/code-series">code-series</a></li>
+		</ul>
+	</div>
+</PageLayout>
