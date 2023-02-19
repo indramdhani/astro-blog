@@ -14,13 +14,14 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 	<section>
 		<h1 class="title mb-6">Hello World!</h1>
 		<p class="mb-4">
-			Hi, I’m a theme for Astro, an example of how you can use this starter to create a personal
-			blog. If you want to know more about how you can customise me, add more posts, and make it
-			your own, click on one the github icon link below which will take you to my repo.
+			Hey there, I'm Indra Ramdhani and I'm a tech enthusiast living in Yogyakarta, Indonesia.
+			Currently, I'm very passionate about learning and developing web applications, serverless
+			technology and microservices. When I'm not busy coding, I like to go biking, take photos,
+			explore the mountains, and have fun playing Lego.
 		</p>
 		<SocialList />
 	</section>
-	<section aria-label="Blog post list" class="mt-16">
+	<section hidden aria-label="Blog post list" class="mt-16">
 		<h2 class="title mb-4 text-xl">Posts</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			{
@@ -32,7 +33,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 			}
 		</ul>
 	</section>
-	<section class="mt-16">
+	<section class="mt-16 hidden">
 		<h2 class="title mb-4 text-xl">Technologies</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			<li>

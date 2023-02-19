@@ -1,10 +1,10 @@
 const siteMeta = {
-	author: "Chris Williams",
-	title: "Astro Theme Cactus",
-	description: "An opinionated starter theme for Astro",
+	author: "indra ramdhani",
+	title: "clipboard",
+	description: "just another blog site with astro",
 	lang: "en-GB",
 	ogLocale: "en_GB",
-	githubUrl: "https://github.com/chrismwilliams/astro-theme-cactus",
+	githubUrl: "https://github.com/indramdhani/astro-blog",
 	themeColorLight: "#fafafa",
 	themeColorDark: "#1d1f21",
 };
