@@ -40,11 +40,13 @@ const postDate = getFormattedDate(content.data.publishDate);
 						class="cactus-link inline-block before:content-['#']"
 						aria-label={`View more blogs with the tag ${tag}`}
 						href={`/tags/${tag}`}
-					>{tag}</a>
+					>
+						{tag}
+					</a>
 					{i < content.data.tags.length - 1 && ", "}
 				</>
 			))}
 		</div>
 	)
 }
-<p class="mt-8">{content.data.description}</p>
+<p hidden class="mt-8">{content.data.description}</p>
