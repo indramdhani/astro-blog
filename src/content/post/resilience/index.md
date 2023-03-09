@@ -1,7 +1,6 @@
 ---
 title: "resilience?"
 publishDate: "09 March 2023"
-description: ""
 tags:
   - "journal"
 ---
