@@ -11,7 +11,16 @@ Resilience is the ability to adapt and cope with adversity and bounce back from 
 ### how to build resilience
 
 - practice acceptance
+  - accept uncontrollable changes
 - reach out to others
+  - networking
+  - ask for help
+  - help the others
 - invest in self-care
+  - body
+  - mind
+  - soul
 - look for meaning and purpose
+  - develop empathy
 - stay motivated
+  - self appreciation
