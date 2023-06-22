@@ -3,7 +3,7 @@ title: "How to Scale and Make Redis More Resilient"
 publishDate: "22 June 2023"
 description: "Redis is a popular in-memory data store that is known for its speed and scalability."
 tags:
-  - "journal"
+  - "server-series"
   - "redis"
 ---
 
