@@ -4,6 +4,7 @@ publishDate: "23 June 2023"
 description: "Communication is not just about the words we say, it also includes nonverbal cues such as body language, tone of voice, and touch."
 tags:
   - "journal"
+  - "self-development"
 ---
 
 Communication is not just about the words we say, it also includes nonverbal cues such as body language, tone of voice, and touch. Understanding nonverbal communication is important because it can greatly affect how we perceive and interact with others. In this blog post, we will delve into the different aspects of nonverbal communication and how it relates to empathy.

@@ -3,6 +3,7 @@ title: "resilience?"
 publishDate: "09 March 2023"
 tags:
   - "journal"
+  - "self-development"
 ---
 
 Resilience is the ability to adapt and cope with adversity and bounce back from setbacks. It can be strengthened through positive thinking, problem-solving, social support, self-care, and a growth mindset. Resilience allows individuals to navigate life's challenges and achieve their goals, even in the face of adversity.
@@ -23,3 +24,7 @@ Resilience is the ability to adapt and cope with adversity and bounce back from 
   - develop empathy
 - stay motivated
   - self appreciation
+
+---
+
+_this is notes that i take during self-development-pragram_

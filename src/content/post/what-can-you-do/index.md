@@ -4,6 +4,7 @@ publishDate: "09 March 2023"
 description: "to manage your stress better"
 tags:
   - "journal"
+  - "self-development"
 ---
 
 - identify stressor
@@ -29,3 +30,7 @@ tags:
     - share your feelings
 - manage your time better
 - relieve stress in the moment
+
+---
+
+_this is notes that i take during self-development-pragram_
