@@ -1,7 +1,7 @@
 ---
 title: "Become a More Effective Manager by Applying the 80/20 Rule"
 publishDate: "28 June 2023"
-description: "My takeaway `notes from How to Become an 80/20 Manager and Achieve Exceptional Results at Work`"
+description: "My takeaway notes from **How to Become an 80/20 Manager and Achieve Exceptional Results at Work**."
 tags:
   - "productivity"
 ---
