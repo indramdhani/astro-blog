@@ -4,7 +4,7 @@ publishDate: "31 December 2023"
 description: "writing clean code is an essential skill for software engineers that can improve the efficiency and quality of the development process"
 tags:
   - "clean code"
-  - "software engineers"
+  - "software development"
 ---
 
 Writing clean code improves readibility and comprehension for other developers. When code is written in a clean and concise manner, it is easier for other developers to understand the functionality and logic of the code. This improves collaboration and allows for more efficient debugging and problem solving
