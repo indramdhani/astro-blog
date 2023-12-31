@@ -3,7 +3,7 @@ title: "Importance of Logging"
 publishDate: "1 January 2024"
 description: "Logging is a crucial aspect that is often overlooked"
 tags:
-  - "clean code"
+  - "logging"
   - "software development"
 ---
 
