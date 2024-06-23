@@ -1,6 +1,6 @@
 ---
 title: "Transitional Step To Become Solutions Architect"
-publishDate: "1 January 2024"
+publishDate: "2 January 2024"
 description: "Solutions architect is conductor of an orchestra, coordinating different instrument and teams to create cohesive solutions that meet the needs"
 tags:
   - "solutions architect"
