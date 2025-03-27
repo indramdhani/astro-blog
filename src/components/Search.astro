@@ -1,0 +1,83 @@
+---
+import { getCollection } from "astro:content";
+
+// Get all posts
+const posts = await getCollection("post");
+
+// Create a search index with relevant post data
+const searchIndex = posts.map((post) => ({
+	slug: post.slug,
+	title: post.data.title,
+	description: post.data.description || "",
+	body: post.body,
+}));
+---
+
+<div class="search-container">
+	<input
+		type="text"
+		id="search-input"
+		placeholder="Search posts..."
+		class="w-full rounded-md border px-3 py-2 dark:border-gray-700 dark:bg-gray-800"
+	/>
+	<ul id="search-results" class="space-y-2"></ul>
+</div>
+
+<script define:vars={{ searchIndex }}>
+	// Client-side search functionality
+	const searchInput = document.getElementById("search-input");
+	const searchResults = document.getElementById("search-results");
+
+	function search(query) {
+		if (!query) {
+			searchResults.innerHTML = "";
+			return;
+		}
+
+		const results = searchIndex.filter((post) => {
+			const searchContent = `${post.title} ${post.description} ${post.body}`.toLowerCase();
+			return searchContent.includes(query.toLowerCase());
+		});
+
+		// Display results
+		searchResults.innerHTML = results
+			.map(
+				(post) => `
+        <li class="search-result">
+          <a href="/posts/${
+						post.slug
+					}" class="block p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+            <h3 class="text-lg font-semibold">${post.title}</h3>
+            ${
+							post.description
+								? `<p class="text-gray-600 dark:text-gray-400">${post.description}</p>`
+								: ""
+						}
+          </a>
+        </li>
+      `
+			)
+			.join("");
+	}
+
+	// Debounce function to limit how often the search runs
+	function debounce(func, wait) {
+		let timeout;
+		return function executedFunction(...args) {
+			const later = () => {
+				clearTimeout(timeout);
+				func(...args);
+			};
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+		};
+	}
+
+	// Add event listener with debounce
+	searchInput.addEventListener(
+		"input",
+		debounce((e) => {
+			search(e.target.value);
+		}, 300)
+	);
+</script>
