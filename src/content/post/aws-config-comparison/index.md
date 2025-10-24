@@ -1,7 +1,7 @@
 ---
-title: "Comparing AWS: CloudFront Key-Value Store, AppConfig, Secrets Manager, and Parameter Store"
+title: "AWS AppConfig, Secrets Manager, Parameter Store, CloudFront"
 publishDate: "2025-10-24"
-description: "When to use CloudFront Key-Value Store, AWS AppConfig, AWS Secrets Manager and Systems Manager Parameter Store — similarities, differences, Lambda integration, and best practices."
+description: "When to use AppConfig, Secrets Manager, and Parameter Store — trade-offs, Lambda patterns, and when CloudFront edge KVS applies."
 categories:
   - "aws"
   - "architecture"
