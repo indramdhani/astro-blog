@@ -47,7 +47,7 @@
 		"typescript": "^5.8.2"
 	},
 	"dependencies": {
-		"@astrojs/rss": "^4.0.11",
+		"@astrojs/rss": "^4.0.15",
 		"@typescript-eslint/utils": "^8.28.0",
 		"astro": "^5.5.5",
 		"fuse.js": "^7.1.0",
