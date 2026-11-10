@@ -1,26 +1,40 @@
 ---
 import type { GetStaticPathsResult } from "astro";
 import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import { getAllPosts } from "@/utils/collection";
+import { sortMDByDate } from "@/utils";
 import PostLayout from "@/layouts/BlogPost";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-	const posts: CollectionEntry<"post">[] = await getCollection("post");
-	const params = posts.map((post) => ({
-		params: { post: post.slug },
-		props: { post },
-	}));
-	return params;
+	const posts = sortMDByDate(await getAllPosts());
+	return posts.map((post, i) => {
+		// related posts: most shared tags first (newest wins ties), max 3
+		const related = posts
+			.filter((p) => p.slug !== post.slug)
+			.map((p) => ({ p, shared: p.data.tags.filter((t) => post.data.tags.includes(t)).length }))
+			.filter(({ shared }) => shared > 0)
+			.sort((a, b) => b.shared - a.shared)
+			.slice(0, 3)
+			.map(({ p }) => p);
+		return {
+			params: { post: post.slug },
+			// posts are sorted newest first: the "next" post is the older one
+			props: { post, newer: posts[i - 1], older: posts[i + 1], related },
+		};
+	});
 }
 
 interface Props {
 	post: CollectionEntry<"post">;
+	newer?: CollectionEntry<"post">;
+	older?: CollectionEntry<"post">;
+	related: CollectionEntry<"post">[];
 }
 
-const { post } = Astro.props;
+const { post, newer, older, related } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<PostLayout post={post}>
+<PostLayout post={post} newer={newer} older={older} related={related}>
 	<Content />
 </PostLayout>

@@ -1,6 +1,6 @@
 ---
 title: "What can you do?"
-publishDate: "09 March 2023"
+publishDate: "2023-03-09"
 description: "to manage your stress better"
 tags:
   - "journal"

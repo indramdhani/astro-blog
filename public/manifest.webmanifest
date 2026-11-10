@@ -1,7 +1,7 @@
 {
 	"name": "clipboard",
 	"short_name": "clipboard",
-	"description": "just another blog site with astro",
+	"description": "Notes by Indra Ramdhani on web development, software architecture, serverless and everyday life.",
 	"icons": [
 		{
 			"src": "/192x192.png",

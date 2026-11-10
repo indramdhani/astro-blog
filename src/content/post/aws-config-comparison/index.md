@@ -2,9 +2,6 @@
 title: "AWS AppConfig, Secrets Manager, Parameter Store, CloudFront"
 publishDate: "2025-10-24"
 description: "When to use AppConfig, Secrets Manager, and Parameter Store — trade-offs, Lambda patterns, and when CloudFront edge KVS applies."
-categories:
-  - "aws"
-  - "architecture"
 tags:
   - "aws"
   - "appconfig"

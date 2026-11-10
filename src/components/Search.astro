@@ -1,83 +1,91 @@
 ---
-import { getCollection } from "astro:content";
-
-// Get all posts
-const posts = await getCollection("post");
-
-// Create a search index with relevant post data
-const searchIndex = posts.map((post) => ({
-	slug: post.slug,
-	title: post.data.title,
-	description: post.data.description || "",
-	body: post.body,
-}));
 ---
 
 <div class="search-container">
+	<label for="search-input" class="sr-only">Search posts</label>
 	<input
-		type="text"
+		type="search"
 		id="search-input"
 		placeholder="Search posts..."
+		autocomplete="off"
 		class="w-full rounded-md border px-3 py-2 dark:border-gray-700 dark:bg-gray-800"
 	/>
-	<ul id="search-results" class="space-y-2"></ul>
+	<p id="search-status" class="sr-only" aria-live="polite"></p>
+	<ul id="search-results" class="mt-2 space-y-2"></ul>
 </div>
 
-<script define:vars={{ searchIndex }}>
-	// Client-side search functionality
-	const searchInput = document.getElementById("search-input");
-	const searchResults = document.getElementById("search-results");
+<script>
+	import Fuse from "fuse.js";
 
-	function search(query) {
-		if (!query) {
-			searchResults.innerHTML = "";
-			return;
-		}
+	type Entry = { slug: string; title: string; description: string; tags: string[] };
 
-		const results = searchIndex.filter((post) => {
-			const searchContent = `${post.title} ${post.description} ${post.body}`.toLowerCase();
-			return searchContent.includes(query.toLowerCase());
-		});
+	const input = document.getElementById("search-input") as HTMLInputElement | null;
+	const results = document.getElementById("search-results");
+	const status = document.getElementById("search-status");
 
-		// Display results
-		searchResults.innerHTML = results
-			.map(
-				(post) => `
-        <li class="search-result">
-          <a href="/posts/${
-						post.slug
-					}" class="block p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-            <h3 class="text-lg font-semibold">${post.title}</h3>
-            ${
-							post.description
-								? `<p class="text-gray-600 dark:text-gray-400">${post.description}</p>`
-								: ""
-						}
-          </a>
-        </li>
-      `
-			)
-			.join("");
-	}
+	if (input && results && status) {
+		let fuse: Fuse<Entry> | undefined;
+		let loading: Promise<void> | undefined;
 
-	// Debounce function to limit how often the search runs
-	function debounce(func, wait) {
-		let timeout;
-		return function executedFunction(...args) {
-			const later = () => {
-				clearTimeout(timeout);
-				func(...args);
-			};
-			clearTimeout(timeout);
-			timeout = setTimeout(later, wait);
+		// the index is only downloaded the first time the box is used
+		const load = () => {
+			loading ??= fetch("/search.json")
+				.then((res) => res.json() as Promise<Entry[]>)
+				.then((entries) => {
+					fuse = new Fuse(entries, {
+						keys: [
+							{ name: "title", weight: 3 },
+							{ name: "tags", weight: 2 },
+							{ name: "description", weight: 1 },
+						],
+						threshold: 0.35,
+						ignoreLocation: true,
+					});
+				});
+			return loading;
 		};
-	}
 
-	// Add event listener with debounce
-	searchInput.addEventListener(
-		"input",
-		debounce((e) => {
-			search(e.target.value);
-		}, 300)
-	);
+		const render = (entries: Entry[]) => {
+			results.replaceChildren(
+				...entries.map((entry) => {
+					const li = document.createElement("li");
+					const a = document.createElement("a");
+					a.href = `/posts/${entry.slug}`;
+					a.className = "block rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-700";
+					const h3 = document.createElement("h3");
+					h3.className = "text-lg font-semibold";
+					h3.textContent = entry.title;
+					a.append(h3);
+					if (entry.description) {
+						const p = document.createElement("p");
+						p.className = "text-gray-600 dark:text-gray-400";
+						p.textContent = entry.description;
+						a.append(p);
+					}
+					li.append(a);
+					return li;
+				})
+			);
+		};
+
+		const search = async () => {
+			const query = input.value.trim();
+			if (!query) {
+				render([]);
+				status.textContent = "";
+				return;
+			}
+			await load();
+			const found = fuse!.search(query, { limit: 10 }).map((r) => r.item);
+			render(found);
+			status.textContent = `${found.length} result${found.length === 1 ? "" : "s"} found`;
+		};
+
+		let timeout: ReturnType<typeof setTimeout>;
+		input.addEventListener("focus", () => void load());
+		input.addEventListener("input", () => {
+			clearTimeout(timeout);
+			timeout = setTimeout(() => void search(), 200);
+		});
+	}
 </script>

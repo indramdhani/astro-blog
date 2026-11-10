@@ -1,6 +1,6 @@
 ---
 title: "Docker Best Practices"
-publishDate: "21 December 2023"
+publishDate: "2023-12-21"
 description: "Several best practices for employing dockers on software development"
 tags:
   - "docker"

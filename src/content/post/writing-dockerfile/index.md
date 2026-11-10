@@ -1,9 +1,7 @@
 ---
 title: "Writing Dockerfile"
-publishDate: "07 March 2021"
+publishDate: "2021-03-07"
 description: "Dockerfile define environment and avoid discrepancies with dependencies or runtime versions."
-categories:
-  - "docker-series"
 tags:
   - "docker-series"
   - "docker"

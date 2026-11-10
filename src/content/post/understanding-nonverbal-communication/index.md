@@ -1,6 +1,6 @@
 ---
 title: "Understanding Nonverbal Communication"
-publishDate: "23 June 2023"
+publishDate: "2023-06-23"
 description: "Communication is not just about the words we say, it also includes nonverbal cues such as body language, tone of voice, and touch."
 tags:
   - "journal"

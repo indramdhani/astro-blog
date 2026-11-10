@@ -1,16 +1,16 @@
 ---
 import { MENU_LINKS } from "@/data/constants";
+import siteConfig from "@/site-config";
 
 const year = new Date().getFullYear();
 ---
 
 <footer
-	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pt-20 pb-4 text-center align-top text-gray-500 sm:flex-row sm:justify-between sm:text-xs"
+	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-20 text-center align-top text-gray-500 sm:flex-row sm:justify-between sm:text-xs"
 >
 	<div class="mr-0 sm:mr-4">
 		Copyright &copy; {year}
-		<span aria-label="rocket emoji">🚀</span>
-		Astro Cactus
+		{siteConfig.author}
 	</div>
 	<nav
 		aria-label="More on this site"
@@ -20,11 +20,19 @@ const year = new Date().getFullYear();
 			MENU_LINKS.map((link) => (
 				<a
 					href={link.path}
-					class="sm:hover:text-textColor px-4 py-2 sm:py-0 sm:px-2 sm:hover:underline"
+					class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
 				>
 					{link.title}
 				</a>
 			))
 		}
+		<a href="/rss.xml" class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+			>rss</a
+		>
+		<a
+			href={siteConfig.githubUrl}
+			class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+			rel="noopener noreferrer">source</a
+		>
 	</nav>
 </footer>

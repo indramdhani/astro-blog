@@ -1,6 +1,6 @@
 ---
 title: "Understanding Empathy"
-publishDate: "23 June 2023"
+publishDate: "2023-06-23"
 description: "Empathy is the ability to understand and share the feelings of others."
 tags:
   - "journal"

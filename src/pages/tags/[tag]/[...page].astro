@@ -1,21 +1,22 @@
 ---
 import type { GetStaticPathsOptions, Page } from "astro";
 import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import { getAllPosts } from "@/utils/collection";
 import PageLayout from "@/layouts/Base";
 import PostPreview from "@/components/blog/PostPreview";
 import Pagination from "@/components/Paginator";
-import { getUniqueTags, sortMDByDate } from "@/utils";
+import { getUniqueTags, sortMDByDate, tagSlug } from "@/utils";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-	const allPosts = await getCollection("post");
+	const allPosts = await getAllPosts();
 	const allPostsByDate = sortMDByDate(allPosts);
 	const uniqueTags = getUniqueTags(allPostsByDate);
 
 	return uniqueTags.flatMap((tag) => {
 		const filterPosts = allPostsByDate.filter((post) => post.data.tags?.includes(tag));
 		return paginate(filterPosts, {
-			params: { tag },
+			params: { tag: tagSlug(tag) },
+			props: { tagName: tag },
 			pageSize: 10,
 		});
 	});
@@ -23,10 +24,10 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 
 interface Props {
 	page: Page<CollectionEntry<"post">>;
+	tagName: string;
 }
 
-const { page } = Astro.props;
-const { tag } = Astro.params;
+const { page, tagName: tag } = Astro.props;
 
 const meta = {
 	title: `Tag: ${tag}`,
