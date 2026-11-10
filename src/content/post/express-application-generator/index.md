@@ -3,9 +3,8 @@ title: "Express Application Generator"
 publishDate: "2021-03-03"
 description: "Quickly scaffold an Express application skeleton with the express-generator tool."
 tags:
-  - code-series
+  - "code-series"
   - "expressjs"
-  - "generator"
 ---
 
 Use the application generator tool, `express-generator`, to quickly create an application skeleton.

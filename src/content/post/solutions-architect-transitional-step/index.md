@@ -3,7 +3,8 @@ title: "Transitional Step To Become Solutions Architect"
 publishDate: "2024-01-02"
 description: "Solutions architect is conductor of an orchestra, coordinating different instrument and teams to create cohesive solutions that meet the needs"
 tags:
-  - "solutions architect"
+  - "solutions-architect"
+  - "architecture"
 ---
 Imagine yourself as the conductor of an orchestra, not of musical instruments, but of technology stacks and talented teams. That's the essence of being a solutions architect – the maestro who choreographs diverse technologies and people to create harmonious solutions that resonate with business needs.
 

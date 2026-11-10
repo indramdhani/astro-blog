@@ -1,0 +1,42 @@
+---
+import PageLayout from "@/layouts/Base";
+import PostPreview from "@/components/blog/PostPreview";
+import { getAllPosts } from "@/utils/collection";
+import { sortMDByDate } from "@/utils";
+
+const posts = sortMDByDate(await getAllPosts());
+
+const byYear = new Map<number, typeof posts>();
+for (const post of posts) {
+	const year = post.data.publishDate.getUTCFullYear();
+	byYear.set(year, [...(byYear.get(year) ?? []), post]);
+}
+
+const meta = {
+	title: "Archive",
+	description: `All ${posts.length} posts on clipboard, grouped by year.`,
+};
+---
+
+<PageLayout meta={meta}>
+	<h1 class="title mb-6">Archive</h1>
+	<div class="space-y-10">
+		{
+			[...byYear].map(([year, yearPosts]) => (
+				<section aria-labelledby={`year-${year}`}>
+					<h2 id={`year-${year}`} class="title mb-4 text-xl">
+						{year}
+						<span class="text-sm font-normal text-gray-500">({yearPosts.length})</span>
+					</h2>
+					<ul class="space-y-4 sm:space-y-2">
+						{yearPosts.map((p) => (
+							<li class="flex flex-col gap-x-2 sm:flex-row">
+								<PostPreview post={p} />
+							</li>
+						))}
+					</ul>
+				</section>
+			))
+		}
+	</div>
+</PageLayout>

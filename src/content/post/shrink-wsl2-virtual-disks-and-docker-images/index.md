@@ -3,7 +3,6 @@ title: "How to Shrink WSL2 Virtual Disks and Docker Images"
 publishDate: "2023-09-09"
 description: "Learn how to reclaim disk space by shrinking WSL2 virtual disks and Docker images"
 tags:
-  - "wsl2"
   - "docker"
   - "windows"
 ---

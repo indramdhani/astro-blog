@@ -5,7 +5,7 @@ import { sortMDByDate } from "@/utils";
 export async function GET() {
 	const posts = sortMDByDate(await getAllPosts());
 	const index = posts.map((post) => ({
-		slug: post.slug,
+		slug: post.id,
 		title: post.data.title,
 		description: post.data.description,
 		tags: post.data.tags,

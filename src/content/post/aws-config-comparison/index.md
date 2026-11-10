@@ -4,10 +4,7 @@ publishDate: "2025-10-24"
 description: "When to use AppConfig, Secrets Manager, and Parameter Store — trade-offs, Lambda patterns, and when CloudFront edge KVS applies."
 tags:
   - "aws"
-  - "appconfig"
-  - "parameter-store"
-  - "secrets-manager"
-  - "cloudfront"
+  - "architecture"
 ---
 
 This article compares four AWS services that are commonly used to store configuration and small pieces of data:

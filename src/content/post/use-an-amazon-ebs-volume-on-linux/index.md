@@ -4,7 +4,7 @@ publishDate: "2020-06-16"
 description: "Suppose that you have created a new EBS volume for your instance. In order to use the new volume you have to attach it to your instance and then format it."
 tags:
   - "aws-series"
-  - "ebs"
+  - "aws"
   - "ec2"
 ---
 

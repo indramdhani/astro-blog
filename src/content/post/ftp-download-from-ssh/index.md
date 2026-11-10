@@ -4,7 +4,6 @@ publishDate: "2021-02-12"
 description: "Download a whole FTP directory from an SSH session with a single wget command."
 tags:
   - "server-series"
-  - "ftp"
   - "ssh"
 ---
 
