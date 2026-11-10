@@ -1,6 +1,6 @@
 ---
 title: "10 Tips for Creating a To-do List That Really Works?"
-publishDate: "19 June 2023"
+publishDate: "2023-06-19"
 description: "Following these tips can help you create a to-do list that really works and helps you achieve your goals."
 tags:
   - "journal"

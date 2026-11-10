@@ -1,6 +1,6 @@
 ---
 title: "Benefits of Clean Code"
-publishDate: "31 December 2023"
+publishDate: "2023-12-31"
 description: "writing clean code is an essential skill for software engineers that can improve the efficiency and quality of the development process"
 tags:
   - "clean code"

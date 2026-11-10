@@ -1,10 +1,7 @@
 ---
 title: "Use an Amazon EBS Volume on Linux"
-publishDate: "16 June 2020"
+publishDate: "2020-06-16"
 description: "Suppose that you have created a new EBS volume for your instance. In order to use the new volume you have to attach it to your instance and then format it."
-categories:
-  - "notebook"
-  - "server-series"
 tags:
   - "aws-series"
   - "ebs"

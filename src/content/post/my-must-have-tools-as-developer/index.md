@@ -1,6 +1,6 @@
 ---
 title: "My Must-Have Tools as a Developer"
-publishDate: "28 June 2023"
+publishDate: "2023-06-28"
 description: "As a developer, setting up a new laptop can be a daunting task."
 tags:
   - "productivity"

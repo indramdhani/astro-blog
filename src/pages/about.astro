@@ -1,0 +1,32 @@
+---
+import PageLayout from "@/layouts/Base";
+import SocialList from "@/components/SocialList";
+
+const meta = {
+	title: "About",
+	description:
+		"About Indra Ramdhani, a tech enthusiast from Yogyakarta, Indonesia who writes about web development, serverless and microservices.",
+};
+---
+
+<PageLayout meta={meta}>
+	<h1 class="title mb-6">About</h1>
+	<div class="mb-8 space-y-4">
+		<p>
+			Hey there, I'm Indra Ramdhani and I'm a tech enthusiast living in Yogyakarta, Indonesia.
+			Currently, I'm very passionate about learning and developing web applications, serverless
+			technology and microservices.
+		</p>
+		<p>
+			When I'm not busy coding, I like to go biking, take photos, explore the mountains, and have
+			fun playing Lego.
+		</p>
+		<p>
+			This blog is my clipboard: notes on things I learn, mostly in English, and some personal
+			writing in Bahasa Indonesia. You can follow it via <a class="cactus-link" href="/rss.xml"
+				>RSS</a
+			>.
+		</p>
+	</div>
+	<SocialList />
+</PageLayout>

@@ -2,9 +2,6 @@
 title: "Setup SWAP Space on Amazon EC2 Instance Using A Partition"
 publishDate: "2020-06-17"
 description: "setup and calculate the swap space on amazon ec2 instance"
-categories:
-  - "notebook"
-  - "server-series"
 tags:
   - "aws-series"
   - "ec2"

@@ -4,23 +4,41 @@ import BaseHead from "@/components/BaseHead";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SkipLink from "@/components/SkipLink";
-import siteConfig from "@/site-config";
+import siteConfig, { languages } from "@/site-config";
 
 interface Props {
 	meta: SiteMeta;
 }
 
 const {
-	meta: { title, description = siteConfig.description, ogImage, articleDate },
+	meta: {
+		title,
+		description = siteConfig.description,
+		ogImage,
+		ogImageAlt,
+		articleDate,
+		updatedDate,
+		tags,
+		lang = "en",
+	},
 } = Astro.props;
 ---
 
-<html lang={siteConfig.lang}>
+<html lang={languages[lang].htmlLang}>
 	<head>
-		<BaseHead title={title} description={description} ogImage={ogImage} articleDate={articleDate} />
+		<BaseHead
+			title={title}
+			description={description}
+			ogImage={ogImage}
+			ogImageAlt={ogImageAlt}
+			articleDate={articleDate}
+			updatedDate={updatedDate}
+			tags={tags}
+			lang={lang}
+		/>
 		<script define:vars={{ siteConfig }}>
 			const root = document.documentElement;
-			const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
+			const colorThemeMetaTags = document.querySelectorAll("meta[name='theme-color']");
 
 			// get user preference of dark mode, 1st local storage, 2nd browser
 			function getThemePreference() {
@@ -35,11 +53,14 @@ const {
 			// watch document element class attribute and update user preference when it changes.
 			const observer = new MutationObserver(() => {
 				const rootIsDark = root.classList.contains("dark");
-				// set the meta attribute
-				colorThemeMetaTag.setAttribute(
-					"content",
-					siteConfig[rootIsDark ? "themeColorDark" : "themeColorLight"]
-				);
+				// the manual toggle wins over the OS preference, so drop the media queries
+				colorThemeMetaTags.forEach((tag) => {
+					tag.removeAttribute("media");
+					tag.setAttribute(
+						"content",
+						siteConfig[rootIsDark ? "themeColorDark" : "themeColorLight"]
+					);
+				});
 				// store user preference
 				if (typeof localStorage !== "undefined") {
 					localStorage.setItem("theme", rootIsDark ? "dark" : "light");

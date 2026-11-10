@@ -1,21 +1,18 @@
 ---
 title: "7 Alasan Kita Harus Berhenti Menggunakan Media Sosial"
 publishDate: "2015-02-11"
+description: "Tujuh alasan kenapa saya merasa sebaiknya kita berhenti menggunakan Facebook dan media sosial lainnya."
 tags:
   - "journal"
   - "facebook"
   - "opini"
   - "sosial-media"
+lang: "id"
 ---
 
 Pada jaman dulu mungkin orang berkomunikasi dengan kurir yang menyampaikan pesan atau dengan surat, tapi sekarang hal-hal yang berhubungan dengan komunikasi sudah berkembang dengan cepat. Sudah ada yang namanya telepon, internet, email, sampai media sosial. Dari awal yang susah-susah dan makan banyak waktu sampai sekarang yang cuma tinggal ketik-ketik klik *send.* Dari yang jaman dulu mahal-mahal banget sekarang murah-murah aja (kalo ini relatif si ya).
 
-<Image
-src="http://thesocialmediamonthly.com/wp-content/uploads/2015/01/social-media-profile.jpg"
-alt="social media profile"
-width={550}
-height={460}
-/>
+![social media profile](./images/social-media-profile.jpg)
 
 Yang namanya media sosial itu macamnya juga sudah banyak pilihannya, dari jaman friendster sampai facebook, twitter dan teman-temannya. Tujuannya memang baik, menjaga hubungan dengan teman-teman atau orang yang kita kenal serta memudahkan kita untuk berkomunikasi dengan orang lain. Menyebarkan informasi juga menjadi semakin mudah lewat media sosial. Tapi kalau penggunaannya tidak tepat, manfaat yang didapat ya tidak ada. Beberapa ketidakmanfaatan facebook/sosial media antara lain:
 

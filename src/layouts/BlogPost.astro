@@ -6,54 +6,140 @@ import BlogHero from "@/components/blog/Hero";
 
 interface Props {
 	post: CollectionEntry<"post">;
+	newer?: CollectionEntry<"post"> | undefined;
+	older?: CollectionEntry<"post"> | undefined;
+	related?: CollectionEntry<"post">[];
 }
 
-const { post } = Astro.props;
+const { post, newer, older, related = [] } = Astro.props;
 const {
-	data: { title, description, ogImage, publishDate },
+	data: { title, description, ogImage, publishDate, updatedDate, tags, lang },
 	slug,
 } = post;
 const socialImage = ogImage ?? `/og-image/${slug}.png`;
 const articleDate = publishDate.toISOString();
 const { headings } = await post.render();
+const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 ---
 
 <script>
-	const scrollBtn = document.getElementById("to-top-btn") as HTMLButtonElement;
-	const targetHeader = document.getElementById("blog-hero") as HTMLDivElement;
+	const scrollBtn = document.getElementById("to-top-btn") as HTMLButtonElement | null;
+	const targetHeader = document.getElementById("blog-hero");
 
-	function callback(entries: IntersectionObserverEntry[]) {
-		entries.forEach((entry) => {
-			// only show the scroll to top button when the heading is out of view
-			scrollBtn.dataset.show = (!entry.isIntersecting).toString();
+	if (scrollBtn && targetHeader) {
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				// only show the scroll to top button when the heading is out of view
+				scrollBtn.dataset.show = (!entry.isIntersecting).toString();
+			});
+		});
+		observer.observe(targetHeader);
+		scrollBtn.addEventListener("click", () => {
+			document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
 		});
 	}
 
-	scrollBtn.addEventListener("click", () => {
-		document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+	// "Copy" button on every code block
+	document.querySelectorAll<HTMLPreElement>(".prose pre").forEach((pre) => {
+		const button = document.createElement("button");
+		button.type = "button";
+		button.textContent = "Copy";
+		button.className = "copy-code";
+		button.setAttribute("aria-label", "Copy code to clipboard");
+		button.addEventListener("click", async () => {
+			try {
+				await navigator.clipboard.writeText(pre.querySelector("code")?.innerText ?? pre.innerText);
+				button.textContent = "Copied";
+			} catch {
+				button.textContent = "Failed";
+			}
+			setTimeout(() => (button.textContent = "Copy"), 2000);
+		});
+		pre.append(button);
 	});
-
-	const observer = new IntersectionObserver(callback);
-	observer.observe(targetHeader);
 </script>
 
-<BaseLayout meta={{ title, description, articleDate, ogImage: socialImage }}>
+<BaseLayout
+	meta={{
+		title,
+		description,
+		articleDate,
+		updatedDate: updatedDate?.toISOString(),
+		tags,
+		lang,
+		ogImage: socialImage,
+	}}
+>
 	<div class="sm:grid sm:grid-cols-[3fr_1fr] sm:items-start sm:gap-x-10">
 		<article class="break-words">
 			<div id="blog-hero"><BlogHero content={post} /></div>
+			{
+				tocHeadings.length > 0 && (
+					<details class="mt-8 sm:hidden">
+						<summary class="cursor-pointer font-semibold">Table of Contents</summary>
+						<ul class="mt-4 space-y-2 text-xs">
+							{tocHeadings.map(({ slug, text, depth }) => (
+								<li class:list={[depth === 3 && "ml-4"]}>
+									<a href={`#${slug}`} class="hover:text-accent">
+										{text}
+									</a>
+								</li>
+							))}
+						</ul>
+					</details>
+				)
+			}
 			<div
 				class="prose prose-sm prose-cactus mt-12 prose-headings:font-semibold prose-headings:before:absolute prose-headings:before:-ml-4 prose-headings:before:text-accent prose-headings:before:content-['#'] prose-th:before:content-none"
 			>
 				<slot />
 			</div>
+			<nav aria-label="More posts" class="mt-16 grid gap-4 sm:grid-cols-2">
+				{
+					older && (
+						<a class="cactus-link inline-block" href={`/posts/${older.slug}`} rel="prev">
+							← {older.data.title}
+						</a>
+					)
+				}
+				{
+					newer && (
+						<a
+							class="cactus-link inline-block sm:text-right"
+							href={`/posts/${newer.slug}`}
+							rel="next"
+						>
+							{newer.data.title} →
+						</a>
+					)
+				}
+			</nav>
+			{
+				related.length > 0 && (
+					<section class="mt-12" aria-labelledby="related-heading">
+						<h2 id="related-heading" class="title mb-4 text-xl">
+							Related posts
+						</h2>
+						<ul class="list-inside list-disc space-y-1">
+							{related.map((p) => (
+								<li>
+									<a class="cactus-link" href={`/posts/${p.slug}`}>
+										{p.data.title}
+									</a>
+								</li>
+							))}
+						</ul>
+					</section>
+				)
+			}
 		</article>
 		<aside class="hidden text-right sm:sticky sm:top-20 sm:block">
 			<h2 class="font-semibold">Table of Contents</h2>
 			<ul class="mt-4 space-y-2 text-xs">
 				{
-					headings.map(({ slug, text }) => (
-						<li class="line-clamp-2 hover:text-accent">
-							<a href={`#${slug}`} aria-label={`Scroll to section: ${text}`}>
+					tocHeadings.map(({ slug, text, depth }) => (
+						<li class:list={["line-clamp-2 hover:text-accent", depth === 3 && "mr-3"]}>
+							<a href={`#${slug}`}>
 								<span>&#35;</span> {text}
 							</a>
 						</li>

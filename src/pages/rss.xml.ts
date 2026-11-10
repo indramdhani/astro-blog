@@ -1,19 +1,23 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
-import siteMeta from "@/site-config";
+import type { APIContext } from "astro";
+import { getAllPosts } from "@/utils/collection";
+import siteConfig from "@/site-config";
+import { sortMDByDate } from "@/utils";
 
-export const get = async () => {
-	const posts = await getCollection("post");
+export async function GET(context: APIContext) {
+	const posts = sortMDByDate(await getAllPosts());
 
 	return rss({
-		title: siteMeta.title,
-		description: siteMeta.description,
-		site: import.meta.env.SITE,
+		title: siteConfig.title,
+		description: siteConfig.description,
+		site: context.site ?? "https://indramdhani.net",
+		trailingSlash: false,
 		items: posts.map((post) => ({
 			title: post.data.title,
 			description: post.data.description,
 			pubDate: post.data.publishDate,
-			link: post.slug,
+			link: `/posts/${post.slug}`,
+			categories: post.data.tags,
 		})),
 	});
-};
+}

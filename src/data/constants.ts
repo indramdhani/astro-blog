@@ -12,6 +12,10 @@ export const MENU_LINKS = [
 		path: "/collections",
 	},
 	{
+		title: "about",
+		path: "/about",
+	},
+	{
 		title: "journal",
 		path: "/tags/journal",
 	},

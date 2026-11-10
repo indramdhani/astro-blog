@@ -1,6 +1,7 @@
 ---
 title: "Express Application Generator"
 publishDate: "2021-03-03"
+description: "Quickly scaffold an Express application skeleton with the express-generator tool."
 tags:
   - code-series
   - "expressjs"

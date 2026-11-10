@@ -32,3 +32,51 @@
 }
 @tailwind components;
 @tailwind utilities;
+
+/* Code blocks follow the site theme (Shiki dual themes) */
+.astro-code,
+.astro-code span {
+	color: var(--shiki-light);
+	background-color: var(--shiki-light-bg);
+}
+
+:root.dark .astro-code,
+:root.dark .astro-code span {
+	color: var(--shiki-dark);
+	background-color: var(--shiki-dark-bg);
+}
+
+.prose pre {
+	position: relative;
+}
+
+.prose .copy-code {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	padding: 0.125rem 0.5rem;
+	font-size: 0.75rem;
+	line-height: 1.25rem;
+	color: inherit;
+	background: transparent;
+	border: 1px solid currentColor;
+	border-radius: 0.25rem;
+	opacity: 0.6;
+}
+
+.prose .copy-code:hover,
+.prose .copy-code:focus-visible {
+	opacity: 1;
+}
+
+/* Heading anchors: the heading text is the link, without the link underline */
+.prose :is(h1, h2, h3, h4, h5, h6) a.heading-link,
+.prose :is(h1, h2, h3, h4, h5, h6) a.heading-link:hover {
+	color: inherit;
+	background-image: none;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) a.heading-link:hover {
+	text-decoration: underline;
+	text-decoration-style: dashed;
+}

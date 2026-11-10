@@ -1,37 +1,31 @@
+import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
 import type { APIContext, GetStaticPathsResult } from "astro";
-import { getCollection, getEntryBySlug } from "astro:content";
-import satori, { SatoriOptions } from "satori";
+import { getEntry } from "astro:content";
+import { getAllPosts } from "@/utils/collection";
+import satori from "satori";
+import type { SatoriOptions } from "satori";
 import { html } from "satori-html";
 import { Resvg } from "@resvg/resvg-js";
 import siteConfig from "@/site-config";
 import { getFormattedDate } from "@/utils";
 
-const monoFontReg = await fetch(
-	"https://api.fontsource.org/v1/fonts/roboto-mono/latin-400-normal.ttf"
-);
+// Fonts ship with the repo (via @fontsource) so the build never needs the network.
+const require = createRequire(import.meta.url);
+const readFont = (weight: 400 | 700) =>
+	readFile(
+		require.resolve(`@fontsource/roboto-mono/files/roboto-mono-latin-${weight}-normal.woff`)
+	);
 
-const monoFontBold = await fetch(
-	"https://api.fontsource.org/v1/fonts/roboto-mono/latin-700-normal.ttf"
-);
+const [monoFontReg, monoFontBold] = await Promise.all([readFont(400), readFont(700)]);
 
 const ogOptions: SatoriOptions = {
 	width: 1200,
 	height: 630,
 	// debug: true,
-	embedFont: true,
 	fonts: [
-		{
-			name: "Roboto Mono",
-			data: await monoFontReg.arrayBuffer(),
-			weight: 400,
-			style: "normal",
-		},
-		{
-			name: "Roboto Mono",
-			data: await monoFontBold.arrayBuffer(),
-			weight: 700,
-			style: "normal",
-		},
+		{ name: "Roboto Mono", data: monoFontReg, weight: 400, style: "normal" },
+		{ name: "Roboto Mono", data: monoFontBold, weight: 700, style: "normal" },
 	],
 };
 
@@ -65,21 +59,20 @@ const markup = (title: string, pubDate: string) => html`<div
 	</div>
 </div>`;
 
-export async function get({ params: { slug } }: APIContext) {
-	const post = await getEntryBySlug("post", slug!);
+export async function GET({ params: { slug } }: APIContext) {
+	const post = await getEntry("post", slug!);
 	const title = post?.data.title ?? siteConfig.title;
 	const postDate = getFormattedDate(post?.data.publishDate ?? Date.now(), {
 		weekday: "long",
 	});
 	const svg = await satori(markup(title, postDate), ogOptions);
 	const png = new Resvg(svg).render().asPng();
-	return {
-		body: png,
-		encoding: "binary",
-	};
+	return new Response(new Uint8Array(png), {
+		headers: { "Content-Type": "image/png" },
+	});
 }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-	const posts = await getCollection("post");
+	const posts = await getAllPosts();
 	return posts.filter(({ data }) => !data.ogImage).map(({ slug }) => ({ params: { slug } }));
 }

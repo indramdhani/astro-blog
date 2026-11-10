@@ -1,6 +1,6 @@
 ---
 title: "Customer Data Platform"
-publishDate: "14 January 2024"
+publishDate: "2024-01-14"
 description: "A customer data platform (CDP) is a software application that creates a persistent, unified customer database that is accessible to other systems"
 tags:
   - "solutions architect"

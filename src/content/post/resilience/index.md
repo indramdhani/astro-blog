@@ -1,6 +1,7 @@
 ---
 title: "resilience?"
-publishDate: "09 March 2023"
+publishDate: "2023-03-09"
+description: "Resilience is the ability to adapt and bounce back from setbacks, and here is how to build it."
 tags:
   - "journal"
   - "self-development"

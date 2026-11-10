@@ -1,7 +1,7 @@
 ---
 title: "Executing the Docker Command Without Sudo (optional)"
 publishDate: "2020-11-03"
-description: find out how to execute docker command without sudo
+description: "find out how to execute docker command without sudo"
 tags:
   - "docker-series"
   - "docker"

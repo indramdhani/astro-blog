@@ -1,6 +1,6 @@
 ---
 title: "Benefit Of Using Microservice"
-publishDate: "20 December 2023"
+publishDate: "2023-12-20"
 description: "Microservice approach has allowed company to achieve greater scalability and efficiency in its operations as well as improved user experience"
 tags:
   - "pattern"

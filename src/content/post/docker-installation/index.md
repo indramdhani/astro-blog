@@ -2,9 +2,6 @@
 title: "Docker Installation"
 publishDate: "2020-11-02"
 description: "Step-by-step guide to install Docker on Ubuntu Server"
-categories:
-  - "docker-series"
-  - "notebook"
 tags:
   - "docker-series"
   - "docker"
