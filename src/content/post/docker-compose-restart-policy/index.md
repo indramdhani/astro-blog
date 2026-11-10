@@ -4,8 +4,6 @@ publishDate: "2025-08-08"
 description: "A guide to Docker Compose restart policy options, their behaviors, and best practices for development and production."
 tags:
   - "docker"
-  - "compose"
-  - "restart policy"
 ---
 
 ## Restart Policy Options

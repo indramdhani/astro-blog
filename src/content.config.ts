@@ -1,11 +1,16 @@
 import { z, defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 
-function removeDupsAndLowerCase(array: string[]) {
-	if (!array.length) return array;
-	const lowercaseItems = array.map((str) => str.trim().toLowerCase());
-	const distinctItems = new Set(lowercaseItems);
-	return Array.from(distinctItems);
+// "Clean Code" and "clean code" both become "clean-code", so tags are always URL-safe and unique
+function normalizeTags(tags: string[]) {
+	const slugs = tags.map((tag) =>
+		tag
+			.trim()
+			.toLowerCase()
+			.replace(/[^\p{L}\p{N}]+/gu, "-")
+			.replace(/^-+|-+$/g, "")
+	);
+	return Array.from(new Set(slugs.filter(Boolean)));
 }
 
 const post = defineCollection({
@@ -21,7 +26,7 @@ const post = defineCollection({
 		// ISO dates (YYYY-MM-DD) are parsed deterministically, unlike "19 June 2023".
 		publishDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
-		tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
+		tags: z.array(z.string()).default([]).transform(normalizeTags),
 		ogImage: z.string().optional(),
 		lang: z.enum(["en", "id"]).default("en"),
 		// drafts are rendered in `astro dev` only

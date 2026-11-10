@@ -4,8 +4,7 @@ publishDate: "2025-08-08"
 description: "Understanding RabbitMQ exchange types is essential for designing robust and scalable messaging systems."
 tags:
   - "rabbitmq"
-  - "messaging"
-  - "software architecture"
+  - "architecture"
 ---
 
 ## overview

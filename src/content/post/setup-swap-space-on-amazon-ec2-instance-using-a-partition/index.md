@@ -4,8 +4,8 @@ publishDate: "2020-06-17"
 description: "setup and calculate the swap space on amazon ec2 instance"
 tags:
   - "aws-series"
+  - "aws"
   - "ec2"
-  - "swap"
 ---
 
 ### Calculate the swap space size

@@ -5,7 +5,6 @@ description: "Dockerfile define environment and avoid discrepancies with depende
 tags:
   - "docker-series"
   - "docker"
-  - "dockerfile"
 ---
 
 The Dockerfile specifies what to be included in your application container when it is executed. Dockerfile define environment and avoid discrepancies with dependencies or runtime versions.

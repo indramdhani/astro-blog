@@ -3,10 +3,8 @@ title: "Version number — why it matters (from my Notion notes)"
 publishDate: "2026-01-29"
 description: "Notes and practical guidance on using version numbers for documents, distilled from a short Notion note."
 tags:
-  - "notion"
-  - "versioning"
   - "productivity"
-  - "docs"
+  - "notion"
 ---
 
 I kept a short Notion note that listed three simple items: communicating change, stability/product maturity, and semantic versioning. Those three points are small, but they capture why adding version information to document titles or metadata is useful. This post expands those ideas and gives practical guidance you can use right away.

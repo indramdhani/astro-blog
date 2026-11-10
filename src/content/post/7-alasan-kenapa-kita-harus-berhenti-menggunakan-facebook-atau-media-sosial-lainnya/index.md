@@ -4,9 +4,8 @@ publishDate: "2015-02-11"
 description: "Tujuh alasan kenapa saya merasa sebaiknya kita berhenti menggunakan Facebook dan media sosial lainnya."
 tags:
   - "journal"
-  - "facebook"
   - "opini"
-  - "sosial-media"
+  - "social-media"
 lang: "id"
 ---
 

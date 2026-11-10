@@ -3,8 +3,8 @@ title: "Importance of Logging"
 publishDate: "2024-01-01"
 description: "Logging is a crucial aspect that is often overlooked"
 tags:
+  - "software-development"
   - "logging"
-  - "software development"
 ---
 
 Effective logging requires a thoughtful and systematic approach. By following the best practices, developer can improve the quality of their logs, enabling faster issue identification, better troubleshooting and enhance system understanding. Consistent and well-planned logging practices contribute to overall application reliability and maintanence

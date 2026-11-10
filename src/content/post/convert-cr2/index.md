@@ -4,7 +4,6 @@ publishDate: "2016-02-06"
 description: "use the snippet on this post to convert cr2 to another format"
 tags:
   - "code-series"
-  - "cr2"
 lang: "id"
 ---
 
