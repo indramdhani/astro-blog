@@ -8,6 +8,8 @@ const siteMeta = {
 	ogLocale: "en_GB",
 	githubUrl: "https://github.com/indramdhani/astro-blog",
 	twitterHandle: "@_ndrrmdhn",
+	// Cloudflare Web Analytics site token (public, safe to commit). Leave empty to disable analytics.
+	cloudflareAnalyticsToken: "",
 	themeColorLight: "#fafafa",
 	themeColorDark: "#1d1f21",
 };
