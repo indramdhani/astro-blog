@@ -12,7 +12,7 @@ const datetime = content.data.publishDate.toISOString();
 const locale = content.data.lang === "id" ? "id-ID" : "en-GB";
 const postDate = getFormattedDate(content.data.publishDate, {}, locale);
 const updated = content.data.updatedDate;
-const readingTime = getReadingTime(content.body);
+const readingTime = getReadingTime(content.body ?? "");
 ---
 
 <h1 class="title">{content.data.title}</h1>

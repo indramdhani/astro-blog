@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
 
 import BaseLayout from "./Base.astro";
 import BlogHero from "@/components/blog/Hero";
@@ -14,11 +15,11 @@ interface Props {
 const { post, newer, older, related = [] } = Astro.props;
 const {
 	data: { title, description, ogImage, publishDate, updatedDate, tags, lang },
-	slug,
+	id,
 } = post;
-const socialImage = ogImage ?? `/og-image/${slug}.png`;
+const socialImage = ogImage ?? `/og-image/${id}.png`;
 const articleDate = publishDate.toISOString();
-const { headings } = await post.render();
+const { headings } = await render(post);
 const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 ---
 
@@ -97,7 +98,7 @@ const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 			<nav aria-label="More posts" class="mt-16 grid gap-4 sm:grid-cols-2">
 				{
 					older && (
-						<a class="cactus-link inline-block" href={`/posts/${older.slug}`} rel="prev">
+						<a class="cactus-link inline-block" href={`/posts/${older.id}`} rel="prev">
 							← {older.data.title}
 						</a>
 					)
@@ -106,7 +107,7 @@ const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 					newer && (
 						<a
 							class="cactus-link inline-block sm:text-right"
-							href={`/posts/${newer.slug}`}
+							href={`/posts/${newer.id}`}
 							rel="next"
 						>
 							{newer.data.title} →
@@ -123,7 +124,7 @@ const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 						<ul class="list-inside list-disc space-y-1">
 							{related.map((p) => (
 								<li>
-									<a class="cactus-link" href={`/posts/${p.slug}`}>
+									<a class="cactus-link" href={`/posts/${p.id}`}>
 										{p.data.title}
 									</a>
 								</li>
