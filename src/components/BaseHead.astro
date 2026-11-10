@@ -108,14 +108,3 @@ const jsonLd = articleDate
 
 <!-- Structured data -->
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
-
-<!-- Cloudflare Web Analytics: cookie-free, production builds only, off until a token is set -->
-{
-	import.meta.env.PROD && siteConfig.cloudflareAnalyticsToken && (
-		<script
-			defer
-			src="https://static.cloudflareinsights.com/beacon.min.js"
-			data-cf-beacon={JSON.stringify({ token: siteConfig.cloudflareAnalyticsToken })}
-		/>
-	)
-}
