@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
 	</div>
 	<nav
 		aria-label="More on this site"
-		class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
+		class="flex flex-wrap justify-center gap-x-2 sm:flex-nowrap sm:gap-x-0 sm:divide-x sm:divide-gray-500"
 	>
 		{
 			MENU_LINKS.map((link) => (
@@ -26,7 +26,7 @@ const year = new Date().getFullYear();
 				</a>
 			))
 		}
-		<a href="/archive" class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+		<a href="/archive/" class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
 			>archive</a
 		>
 		<a href="/rss.xml" class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"

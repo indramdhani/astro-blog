@@ -7,6 +7,7 @@ type SiteMeta = {
 	updatedDate?: string | undefined;
 	tags?: string[] | undefined;
 	lang?: "en" | "id" | undefined;
+	noindex?: boolean | undefined;
 };
 
 export type { SiteMeta };

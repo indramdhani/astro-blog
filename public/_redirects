@@ -1,0 +1,24 @@
+# Tags removed in the tag cleanup -> closest remaining tag
+/tags/ftp                         /tags/ssh/                     301
+/tags/cr2                         /tags/code-series/             301
+/tags/generator                   /tags/expressjs/               301
+/tags/compose                     /tags/docker/                  301
+/tags/dockerfile                  /tags/docker/                  301
+/tags/restart%20policy            /tags/docker/                  301
+/tags/wsl2                        /tags/windows/                 301
+/tags/swap                        /tags/ec2/                     301
+/tags/ebs                         /tags/ec2/                     301
+/tags/appconfig                   /tags/aws/                     301
+/tags/parameter-store             /tags/aws/                     301
+/tags/secrets-manager             /tags/aws/                     301
+/tags/cloudfront                  /tags/aws/                     301
+/tags/messaging                   /tags/rabbitmq/                301
+/tags/facebook                    /tags/social-media/            301
+/tags/sosial-media                /tags/social-media/            301
+/tags/versioning                  /tags/notion/                  301
+/tags/docs                        /tags/notion/                  301
+/tags/software%20architecture     /tags/architecture/            301
+/tags/software%20development      /tags/software-development/    301
+/tags/solutions%20architect       /tags/solutions-architect/     301
+/tags/customer%20data%20platform  /tags/solutions-architect/     301
+/tags/clean%20code                /tags/clean-code/              301

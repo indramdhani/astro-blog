@@ -69,6 +69,22 @@
 	opacity: 1;
 }
 
+/* On devices with a mouse, reveal the button on hover so it never covers code */
+@media (hover: hover) {
+	.prose .copy-code {
+		opacity: 0;
+	}
+
+	.prose pre:hover .copy-code,
+	.prose pre:focus-within .copy-code {
+		opacity: 0.8;
+	}
+
+	.prose .copy-code:focus-visible {
+		opacity: 1;
+	}
+}
+
 /* Heading anchors: the heading text is the link, without the link underline */
 .prose :is(h1, h2, h3, h4, h5, h6) a.heading-link,
 .prose :is(h1, h2, h3, h4, h5, h6) a.heading-link:hover {
@@ -79,4 +95,11 @@
 .prose :is(h1, h2, h3, h4, h5, h6) a.heading-link:hover {
 	text-decoration: underline;
 	text-decoration-style: dashed;
+}
+
+/* Wide tables scroll inside the article instead of widening the page */
+.prose table {
+	display: block;
+	max-width: 100%;
+	overflow-x: auto;
 }

@@ -20,6 +20,7 @@ const {
 		updatedDate,
 		tags,
 		lang = "en",
+		noindex = false,
 	},
 } = Astro.props;
 ---
@@ -35,6 +36,7 @@ const {
 			updatedDate={updatedDate}
 			tags={tags}
 			lang={lang}
+			noindex={noindex}
 		/>
 		<script define:vars={{ siteConfig }}>
 			const root = document.documentElement;
@@ -50,7 +52,7 @@ const {
 
 			const isDark = getThemePreference() === "dark";
 
-			// watch document element class attribute and update user preference when it changes.
+			// watch the document element class and keep the theme-color meta tags in sync.
 			const observer = new MutationObserver(() => {
 				const rootIsDark = root.classList.contains("dark");
 				// the manual toggle wins over the OS preference, so drop the media queries
@@ -61,15 +63,18 @@ const {
 						siteConfig[rootIsDark ? "themeColorDark" : "themeColorLight"]
 					);
 				});
-				// store user preference
-				if (typeof localStorage !== "undefined") {
-					localStorage.setItem("theme", rootIsDark ? "dark" : "light");
-				}
 			});
 			observer.observe(root, { attributeFilter: ["class"] });
 
-			// initailse root class attribute
+			// initialise root class attribute
 			root.classList.toggle("dark", isDark);
+
+			// until the visitor picks a theme with the toggle, follow the OS setting live
+			window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+				if (typeof localStorage === "undefined" || !localStorage.getItem("theme")) {
+					root.classList.toggle("dark", e.matches);
+				}
+			});
 		</script>
 	</head>
 	<body>

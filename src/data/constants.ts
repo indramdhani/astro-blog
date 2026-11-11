@@ -5,18 +5,18 @@ export const MENU_LINKS = [
 	},
 	{
 		title: "blog",
-		path: "/posts",
+		path: "/posts/",
 	},
 	{
 		title: "collections",
-		path: "/collections",
+		path: "/collections/",
 	},
 	{
 		title: "about",
-		path: "/about",
+		path: "/about/",
 	},
 	{
 		title: "journal",
-		path: "/tags/journal",
+		path: "/tags/journal/",
 	},
 ];
