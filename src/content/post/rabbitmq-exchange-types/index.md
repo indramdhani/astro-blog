@@ -7,11 +7,11 @@ tags:
   - "architecture"
 ---
 
-## overview
+## Overview
 
 An **exchange** is a routing mechanism in RabbitMQ that receives from producers and routes them to queues based on rules called **bindings**. The way an exchange routes messages depends on its **type**.
 
-## common exchange types
+## Common Exchange Types
 
 ### Direct Exchange
 

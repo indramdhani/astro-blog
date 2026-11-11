@@ -10,13 +10,13 @@ tags:
 
 Suppose that you have created a new EBS volume for your instance. In order to use the new volume you have to attach it to your instance and then format it.
 
-### Attach EBS volume to EC2 instance
+## Attach EBS volume to EC2 instance
 
 - Login to your AWS console, then go to `EC2` menu and choose `Volumes` submenu under `Elastic Block Store` section.
 - Select your new volume then click `Actions`, and choose `Attach Volume`. Choose instance that will use the new volume.
 - Once completed, the new volume will be attached to the EC2 instance.
 
-### Mount and format an attached volume
+## Mount and format an attached volume
 
 Suppose that the root device volume is `/dev/xvda` and the new attached EBS volume `/dev/xvdb` . Use the following to mount the new volume
 
@@ -65,7 +65,7 @@ sudo mkdir /media/data
 sudo mount /dev/nvme1n1 /media/data
 ```
 
-### Automatically mount an attached volume on reboot
+## Automatically mount an attached volume on reboot
 
 The mount point on the step before is not preserved after rebooting your instance. To mount automatically follow procedure below
 

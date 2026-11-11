@@ -8,11 +8,15 @@ tags:
   - "ec2"
 ---
 
-### Calculate the swap space size
+## Calculate the swap space size
 
-<table><tbody><tr><td>Amount of System RAM</td><td>Recommended swap space</td></tr><tr><td>2 GB of RAM or less</td><td>2x the amount of RAM but never less than 32 MB</td></tr><tr><td>More than 2 GB of RAM but less than 32 GB</td><td>4 GB + (RAM - 2 GB)</td></tr><tr><td>32 GB of RAM or more</td><td>1x the amount of RAM</td></tr></tbody></table>
+| Amount of System RAM | Recommended swap space |
+| --- | --- |
+| 2 GB of RAM or less | 2x the amount of RAM but never less than 32 MB |
+| More than 2 GB of RAM but less than 32 GB | 4 GB + (RAM - 2 GB) |
+| 32 GB of RAM or more | 1x the amount of RAM |
 
-### Create a partition on hard disk as swap space
+## Create a partition on hard disk as swap space
 
 Login in to the instance using SSH
 
@@ -60,7 +64,7 @@ Save and exit
 -> w
 ```
 
-### Setup the swap area
+## Setup the swap area
 
 Use `partprobe` command to inform the OS of partition table change:
 
@@ -86,7 +90,7 @@ Show the current swap space
 sudo swapon -s
 ```
 
-### Update fstab to make the swap allocation permanent on reboot
+## Update fstab to make the swap allocation permanent on reboot
 
 Update the `/etc/fstab`, add new entry to make the swap partition available on reboot
 

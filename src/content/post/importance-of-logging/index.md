@@ -7,7 +7,7 @@ tags:
   - "logging"
 ---
 
-Effective logging requires a thoughtful and systematic approach. By following the best practices, developer can improve the quality of their logs, enabling faster issue identification, better troubleshooting and enhance system understanding. Consistent and well-planned logging practices contribute to overall application reliability and maintanence
+Effective logging requires a thoughtful and systematic approach. By following the best practices, developer can improve the quality of their logs, enabling faster issue identification, better troubleshooting and enhance system understanding. Consistent and well-planned logging practices contribute to overall application reliability and maintenance
 
 1. **Logging should be an integral part of the development process**, logging should not be an afterthought but should be incorporated early in the development cycle. By considering logging requirements from the beginning, developers can ensure that relevant information is captured and that the logging system is properly integrated into the application.
 
