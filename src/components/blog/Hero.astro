@@ -19,15 +19,8 @@ const readingTime = getReadingTime(content.body ?? "");
 <time datetime={datetime}>{postDate}</time>
 <span aria-hidden="true">&nbsp;|&nbsp;</span><span>{readingTime} min read</span>
 {
-	updated && (
-		<p class="mt-1 text-xs text-gray-500">
-			Updated <time datetime={updated.toISOString()}>{getFormattedDate(updated, {}, locale)}</time>
-		</p>
-	)
-}
-{
 	!!content.data.tags?.length && (
-		<div class="inline before:content-['|']">
+		<div class="inline before:mx-[1ch] before:content-['|']">
 			<svg
 				aria-hidden="true"
 				focusable="false"
@@ -58,6 +51,13 @@ const readingTime = getReadingTime(content.body ?? "");
 				</>
 			))}
 		</div>
+	)
+}
+{
+	updated && (
+		<p class="mt-1 text-xs text-gray-500">
+			Updated <time datetime={updated.toISOString()}>{getFormattedDate(updated, {}, locale)}</time>
+		</p>
 	)
 }
 <p hidden class="mt-8">{content.data.description}</p>

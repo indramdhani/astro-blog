@@ -1,4 +1,5 @@
-import { z, defineCollection } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
 // "Clean Code" and "clean code" both become "clean-code", so tags are always URL-safe and unique
