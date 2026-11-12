@@ -40,7 +40,12 @@ const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 		});
 	}
 
-	// "Copy" button on every code block
+	// "Copy" button on every code block; the result is announced through a live region
+	const copyStatus = document.createElement("p");
+	copyStatus.className = "sr-only";
+	copyStatus.setAttribute("aria-live", "polite");
+	document.body.append(copyStatus);
+
 	document.querySelectorAll<HTMLPreElement>(".prose pre").forEach((pre) => {
 		const button = document.createElement("button");
 		button.type = "button";
@@ -51,10 +56,15 @@ const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 			try {
 				await navigator.clipboard.writeText(pre.querySelector("code")?.innerText ?? pre.innerText);
 				button.textContent = "Copied";
+				copyStatus.textContent = "Code copied to clipboard";
 			} catch {
 				button.textContent = "Failed";
+				copyStatus.textContent = "Could not copy the code";
 			}
-			setTimeout(() => (button.textContent = "Copy"), 2000);
+			setTimeout(() => {
+				button.textContent = "Copy";
+				copyStatus.textContent = "";
+			}, 2000);
 		});
 		pre.append(button);
 	});
@@ -98,7 +108,7 @@ const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 			<nav aria-label="More posts" class="mt-16 grid gap-4 sm:grid-cols-2">
 				{
 					older && (
-						<a class="cactus-link inline-block" href={`/posts/${older.id}`} rel="prev">
+						<a class="cactus-link inline-block" href={`/posts/${older.id}/`} rel="prev">
 							← {older.data.title}
 						</a>
 					)
@@ -107,7 +117,7 @@ const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 					newer && (
 						<a
 							class="cactus-link inline-block sm:text-right"
-							href={`/posts/${newer.id}`}
+							href={`/posts/${newer.id}/`}
 							rel="next"
 						>
 							{newer.data.title} →
@@ -124,7 +134,7 @@ const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 						<ul class="list-inside list-disc space-y-1">
 							{related.map((p) => (
 								<li>
-									<a class="cactus-link" href={`/posts/${p.id}`}>
+									<a class="cactus-link" href={`/posts/${p.id}/`}>
 										{p.data.title}
 									</a>
 								</li>

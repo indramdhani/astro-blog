@@ -7,6 +7,8 @@ export function getFormattedDate(
 		day: "numeric",
 		month: "long",
 		year: "numeric",
+		// date-only frontmatter is parsed as UTC midnight; format in UTC so builds do not depend on the host timezone
+		timeZone: "UTC",
 		...options,
 	};
 	return new Date(date).toLocaleDateString(locale, formatOptions);

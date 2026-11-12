@@ -7,8 +7,6 @@ tags:
   - "docker"
 ---
 
-Update your packages list:
-
 By default, `docker` command can only be run by the **root** user or by an user in the **docker** group, that created during installation.
 
 Below is the result if run `docker` without `sudo`

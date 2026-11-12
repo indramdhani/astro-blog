@@ -30,8 +30,10 @@ interface Props {
 const { page, tagName: tag } = Astro.props;
 
 const meta = {
-	title: `Tag: ${tag}`,
-	description: `View all posts with the tag - ${tag}`,
+	title: page.currentPage > 1 ? `Tag: ${tag} (page ${page.currentPage})` : `Tag: ${tag}`,
+	description: `View all posts with the tag - ${tag}${
+		page.currentPage > 1 ? ` (page ${page.currentPage})` : ""
+	}`,
 };
 
 const paginationProps = {

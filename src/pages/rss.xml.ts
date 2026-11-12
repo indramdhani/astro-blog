@@ -11,12 +11,17 @@ export async function GET(context: APIContext) {
 		title: siteConfig.title,
 		description: siteConfig.description,
 		site: context.site ?? "https://indramdhani.net",
-		trailingSlash: false,
+		trailingSlash: true,
+		xmlns: { atom: "http://www.w3.org/2005/Atom" },
+		customData: `<language>en</language><atom:link href="${new URL(
+			"rss.xml",
+			context.site ?? "https://indramdhani.net"
+		)}" rel="self" type="application/rss+xml"/>`,
 		items: posts.map((post) => ({
 			title: post.data.title,
 			description: post.data.description,
 			pubDate: post.data.publishDate,
-			link: `/posts/${post.id}`,
+			link: `/posts/${post.id}/`,
 			categories: post.data.tags,
 		})),
 	});

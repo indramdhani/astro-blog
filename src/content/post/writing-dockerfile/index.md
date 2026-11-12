@@ -1,6 +1,7 @@
 ---
 title: "Writing Dockerfile"
 publishDate: "2021-03-07"
+updatedDate: "2026-11-11"
 description: "Dockerfile define environment and avoid discrepancies with dependencies or runtime versions."
 tags:
   - "docker-series"
@@ -9,7 +10,7 @@ tags:
 
 The Dockerfile specifies what to be included in your application container when it is executed. Dockerfile define environment and avoid discrepancies with dependencies or runtime versions.
 
-### Create Dockerfile on your project's root directory
+## Create Dockerfile on your project's root directory
 
 ```bash
 nano Dockerfile
@@ -17,10 +18,10 @@ nano Dockerfile
 
 Docker images are created using a succession layered images that build on one another. The first step is to add the base image for the application that will form the starting point of the application.
 
-Find your suitable image [here](https://hub.docker.com/_/node/). Let's use `node:12-alpine` as it is the latest LTS version of NodeJS.
+Find your suitable image [here](https://hub.docker.com/_/node/). Let's use `node:22-alpine`, a small image based on an actively maintained LTS version of NodeJS.
 
 ```bash
-FROM node:12-alpine
+FROM node:22-alpine
 ```
 
 Each Dockerfile must begin with `FROM` instruction.
@@ -32,7 +33,7 @@ We will use **node** user's home directory as the working directory and set them
 Let's create `node_modules` directory under app directory in our working directory and set the ownership of the directory
 
 ```
-FROM node:12-alpine
+FROM node:22-alpine
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 ```
@@ -40,7 +41,7 @@ RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 Let's set the working directory
 
 ```
-FROM node:12-alpine
+FROM node:22-alpine
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
@@ -50,7 +51,7 @@ WORKDIR /home/node/app
 Then copy the `package.json` and `package-lock.json`
 
 ```
-FROM node:12-alpine
+FROM node:22-alpine
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
@@ -64,7 +65,7 @@ Adding this `COPY` instruction before running `npm install` or copying the appli
 Let's switch to non-root user / **node** user.
 
 ```
-FROM node:12-alpine
+FROM node:22-alpine
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
@@ -78,7 +79,7 @@ USER node
 then run npm install
 
 ```
-FROM node:12-alpine
+FROM node:22-alpine
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
@@ -94,7 +95,7 @@ RUN npm install
 then copy the application code with the appropriate permission to application directory
 
 ```
-FROM node:12-alpine
+FROM node:22-alpine
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
@@ -112,7 +113,7 @@ COPY --chown=node:node . .
 Let's expose the port of `3000` on the container and start the application
 
 ```
-FROM node:12-alpine
+FROM node:22-alpine
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 

@@ -24,6 +24,8 @@ for (const dir of readdirSync("./src/content/post", { withFileTypes: true })) {
 // https://astro.build/config
 export default defineConfig({
 	site: "https://indramdhani.net",
+	// one canonical form for every URL: /posts/hello-world/
+	trailingSlash: "always",
 	markdown: {
 		shikiConfig: {
 			// light + dark variants, switched in global.css

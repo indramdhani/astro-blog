@@ -31,4 +31,4 @@ itu png bisa diganti dengan format lain yang diinginkan.
 
 Simple ya, hehehe :).
 
-source : [http://askubuntu.com/questions/483379/how-to-convert-cr2-to-jpg-or-png](http://askubuntu.com/questions/483379/how-to-convert-cr2-to-jpg-or-png)
+source : [https://askubuntu.com/questions/483379/how-to-convert-cr2-to-jpg-or-png](https://askubuntu.com/questions/483379/how-to-convert-cr2-to-jpg-or-png)
