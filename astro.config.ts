@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
-import tailwind from "@astrojs/tailwind";
+import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -33,16 +33,16 @@ export default defineConfig({
 			defaultColor: false,
 			wrap: true,
 		},
-		rehypePlugins: [
-			// Astro adds heading ids after user plugins run, so add them first for the anchors
-			rehypeSlug,
-			[rehypeAutolinkHeadings, { behavior: "wrap", properties: { class: "heading-link" } }],
-		],
+		processor: unified({
+			rehypePlugins: [
+				// Astro adds heading ids after user plugins run, so add them first for the anchors
+				rehypeSlug,
+				[rehypeAutolinkHeadings, { behavior: "wrap", properties: { class: "heading-link" } }],
+			],
+		}),
 	},
 	integrations: [
 		mdx({}),
-		// base styles are imported in src/styles/global.css
-		tailwind({ applyBaseStyles: false }),
 		sitemap({
 			serialize(item) {
 				const slug = new URL(item.url).pathname.match(/^\/posts\/([^/]+)\/?$/)?.[1];
