@@ -1,0 +1,26 @@
+name: Scheduled build
+
+# Posts with a future `publishDate` are skipped by the build. This job triggers a
+# Netlify build every day so they go live on their date without a manual deploy.
+on:
+  schedule:
+    # 00:30 UTC = 07:30 in Yogyakarta; date-only publishDates are UTC midnight
+    - cron: "30 0 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify build hook
+        env:
+          HOOK_URL: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$HOOK_URL" ]; then
+            echo "::warning::NETLIFY_BUILD_HOOK secret is not set; scheduled posts will not publish automatically."
+            exit 0
+          fi
+          curl --fail --silent --show-error -X POST -d '{}' "$HOOK_URL" > /dev/null
+          echo "Build triggered"

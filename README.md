@@ -32,6 +32,10 @@ draft: true # optional, drafts are only visible in `npm run dev`
 ---
 ```
 
+### Scheduling posts
+
+Set `publishDate` to a future date and merge the post early: until that date it is left out of the site, RSS, sitemap and search (`npm run dev` still shows it). A daily workflow (`.github/workflows/scheduled-build.yml`, 00:30 UTC) triggers a Netlify build, so the post goes live on its date. This needs a Netlify build hook saved as the GitHub secret `NETLIFY_BUILD_HOOK`. Run the workflow manually from the Actions tab to publish sooner. Netlify deploy previews build future posts too (`INCLUDE_FUTURE_POSTS=true`), so you can review them in the pull request.
+
 ## Site configuration
 
 Site title, author, description, language and social handles live in `src/site.config.ts`; navigation links in `src/data/constants.ts`.
