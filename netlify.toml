@@ -17,3 +17,7 @@
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Deploy previews show scheduled (future-dated) posts so they can be reviewed before they go live
+[context.deploy-preview.environment]
+  INCLUDE_FUTURE_POSTS = "true"
