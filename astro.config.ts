@@ -4,6 +4,7 @@ import mdx from "@astrojs/mdx";
 import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
+import rehypeA11y from "./src/plugins/rehype-a11y.mjs";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 // slug -> last modification date (updatedDate, else publishDate), used for the sitemap <lastmod>
@@ -38,6 +39,7 @@ export default defineConfig({
 				// Astro adds heading ids after user plugins run, so add them first for the anchors
 				rehypeSlug,
 				[rehypeAutolinkHeadings, { behavior: "wrap", properties: { class: "heading-link" } }],
+				rehypeA11y,
 			],
 		}),
 	},

@@ -36,7 +36,8 @@ const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 		});
 		observer.observe(targetHeader);
 		scrollBtn.addEventListener("click", () => {
-			document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+			const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			document.documentElement.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
 		});
 	}
 

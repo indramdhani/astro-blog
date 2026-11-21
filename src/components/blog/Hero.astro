@@ -55,7 +55,7 @@ const readingTime = getReadingTime(content.body ?? "");
 }
 {
 	updated && (
-		<p class="mt-1 text-xs text-gray-500">
+		<p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
 			Updated <time datetime={updated.toISOString()}>{getFormattedDate(updated, {}, locale)}</time>
 		</p>
 	)
