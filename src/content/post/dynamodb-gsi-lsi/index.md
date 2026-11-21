@@ -1,6 +1,6 @@
 ---
 title: "DynamoDB: GSI vs LSI"
-publishDate: "2026-12-31"
+publishDate: "2026-11-21"
 description: "Global vs local secondary indexes: key differences, query scope, creation timing, consistency and cost."
 tags:
   - "aws"

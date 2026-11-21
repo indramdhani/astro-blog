@@ -1,6 +1,6 @@
 ---
 title: "AWS Lambda Performance Best Practices"
-publishDate: "2026-12-29"
+publishDate: "2026-11-21"
 description: "Cold start remedies, memory and runtime choices, async processing, batching and layers to make Lambda faster and cheaper."
 tags:
   - "aws"

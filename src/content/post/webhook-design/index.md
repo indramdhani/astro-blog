@@ -1,6 +1,6 @@
 ---
 title: "Designing Webhooks"
-publishDate: "2026-12-11"
+publishDate: "2026-11-21"
 description: "Provider and receiver design for webhooks: security, idempotency, retries, health checks and queue decoupling."
 tags:
   - "architecture"

@@ -1,6 +1,6 @@
 ---
 title: "Anti-Corruption Layer"
-publishDate: "2026-12-01"
+publishDate: "2026-11-21"
 description: "A DDD pattern that isolates your domain model from legacy or external systems through a translation layer."
 tags:
   - "pattern"

@@ -1,6 +1,6 @@
 ---
 title: "Pessimistic vs Optimistic Locking"
-publishDate: "2026-12-15"
+publishDate: "2026-11-21"
 description: "Two ways to handle concurrent updates: lock rows up front, or detect conflicts at write time."
 tags:
   - "pattern"

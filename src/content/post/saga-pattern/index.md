@@ -1,6 +1,6 @@
 ---
 title: "Saga Pattern"
-publishDate: "2026-11-20"
+publishDate: "2026-11-21"
 description: "Keep data consistent across microservices with local transactions, choreography or orchestration, and compensating actions."
 tags:
   - "pattern"

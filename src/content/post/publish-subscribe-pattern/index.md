@@ -1,6 +1,6 @@
 ---
 title: "Publish-Subscribe Pattern"
-publishDate: "2026-12-08"
+publishDate: "2026-11-21"
 description: "Decouple producers and consumers with topics and brokers, delivery guarantees, and when to pick Kafka, Redis, RabbitMQ or SNS."
 tags:
   - "pattern"

@@ -1,6 +1,6 @@
 ---
 title: "Encoding vs Encryption vs Tokenization"
-publishDate: "2026-12-25"
+publishDate: "2026-11-21"
 description: "Three often confused techniques: encoding is about format, encryption about confidentiality, tokenization about substitution."
 tags:
   - "security"

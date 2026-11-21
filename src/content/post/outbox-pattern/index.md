@@ -1,6 +1,6 @@
 ---
 title: "Transactional Outbox Pattern"
-publishDate: "2026-11-24"
+publishDate: "2026-11-21"
 description: "Publish events reliably by writing them to an outbox table in the same transaction as your data, then relaying them."
 tags:
   - "pattern"

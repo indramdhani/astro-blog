@@ -1,6 +1,6 @@
 ---
 title: "Backend for Frontend (BFF)"
-publishDate: "2026-12-04"
+publishDate: "2026-11-21"
 description: "Give each client type its own backend service so web, mobile and other clients get data shaped for them."
 tags:
   - "pattern"

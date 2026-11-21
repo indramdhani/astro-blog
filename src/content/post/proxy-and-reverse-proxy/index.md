@@ -1,6 +1,6 @@
 ---
 title: "Proxy vs Reverse Proxy"
-publishDate: "2026-12-18"
+publishDate: "2026-11-21"
 description: "The difference between forward and reverse proxies, their use cases, and implementations such as Nginx, ALB and CloudFront."
 tags:
   - "architecture"

@@ -1,6 +1,6 @@
 ---
 title: "Circuit Breaker Pattern"
-publishDate: "2026-11-17"
+publishDate: "2026-11-21"
 description: "How the circuit breaker pattern stops one slow service from taking down the rest: states, thresholds and libraries."
 tags:
   - "pattern"

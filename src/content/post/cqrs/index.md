@@ -1,6 +1,6 @@
 ---
 title: "CQRS: Command Query Responsibility Segregation"
-publishDate: "2026-11-27"
+publishDate: "2026-11-21"
 description: "Separate read and write models to scale and optimise each side, and the trade-offs that come with eventual consistency."
 tags:
   - "pattern"

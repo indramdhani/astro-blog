@@ -1,6 +1,6 @@
 ---
 title: "Storing Passwords Securely with Argon2id"
-publishDate: "2026-12-22"
+publishDate: "2026-11-21"
 description: "Argon2id parameters, bcrypt as a fallback, schemas for MySQL and DynamoDB, and a security checklist for password storage."
 tags:
   - "security"
