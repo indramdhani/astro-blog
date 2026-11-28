@@ -33,6 +33,10 @@ draft: true # optional, drafts are only visible in `npm run dev`
 ---
 ```
 
+## Hosting
+
+Production runs on **Vercel** (project `astro-blog`, domains `www.indramdhani.net` and `indramdhani.net`, which redirects to `www`). Headers, the trailing-slash rule and the redirects for removed tags live in `vercel.json`. `netlify.toml` and `public/_redirects` are only used if the site is also built on Netlify (the PR checks show a Netlify site); keep both in sync when changing headers or redirects.
+
 ## Site configuration
 
 Site title, author, description, language and social handles live in `src/site.config.ts`; navigation links in `src/data/constants.ts`.
