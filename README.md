@@ -4,17 +4,18 @@ Source of [indramdhani.net](https://indramdhani.net), a personal blog built with
 
 ## Commands
 
-| Command           | Action                                  |
-| :---------------- | :-------------------------------------- |
-| `npm ci`          | Install dependencies                    |
-| `npm run dev`     | Start the dev server (drafts are shown) |
-| `npm run build`   | Build the static site to `./dist`       |
-| `npm run preview` | Preview the production build            |
-| `npm run check`   | Type-check Astro/TypeScript files       |
-| `npm run lint`    | Run ESLint                              |
-| `npm run format`  | Format `./src` with Prettier            |
+| Command             | Action                                  |
+| :------------------ | :-------------------------------------- |
+| `npm ci`            | Install dependencies                    |
+| `npm run dev`       | Start the dev server (drafts are shown) |
+| `npm run build`     | Build the static site to `./dist`       |
+| `npm run preview`   | Preview the production build            |
+| `npm run check`     | Type-check Astro/TypeScript files       |
+| `npm run lint`      | Run ESLint                              |
+| `npm run test:a11y` | axe-core + overflow check on the build  |
+| `npm run format`    | Format `./src` with Prettier            |
 
-CI (`.github/workflows/ci.yml`) runs lint, check and build on every pull request. Builds work offline: the OG image fonts come from `@fontsource/roboto-mono`.
+CI (`.github/workflows/ci.yml`) runs lint, check, build and the accessibility check (`npm run test:a11y`, needs a build first and Chromium from `npx playwright install chromium`) on every pull request. Builds work offline: the OG image fonts come from `@fontsource/roboto-mono`.
 
 ## Writing a post
 
