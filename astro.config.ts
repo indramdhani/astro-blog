@@ -24,7 +24,8 @@ for (const dir of readdirSync("./src/content/post", { withFileTypes: true })) {
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://indramdhani.net",
+	// production host: indramdhani.net redirects to www.indramdhani.net in the Vercel domain settings
+	site: "https://www.indramdhani.net",
 	// one canonical form for every URL: /posts/hello-world/
 	trailingSlash: "always",
 	markdown: {

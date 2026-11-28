@@ -9,7 +9,7 @@ import { sortMDByDate } from "@/utils";
 const parser = new MarkdownIt({ html: false, linkify: true });
 
 export async function GET(context: APIContext) {
-	const site = context.site ?? new URL("https://indramdhani.net");
+	const site = context.site ?? new URL("https://www.indramdhani.net");
 	const posts = sortMDByDate(await getAllPosts());
 
 	return rss({
